@@ -1,0 +1,16 @@
+{
+	"client": {
+		"host": "localhost",
+		"port": 1337
+	},
+	"input": null,
+	"jukebox": null,
+	"renderer": null,
+	"server": {
+		"host": null,
+		"port": 1337
+	},
+	"viewport": {
+		"fullscreen": false
+	}
+}

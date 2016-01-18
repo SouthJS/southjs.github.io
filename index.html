@@ -1,13 +1,145 @@
 <!doctype html>
 <html>
 <head>
-    <meta charset="utf-8">
+	<title>SouthJS</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="64x64 32x32 16x16">
+	<link rel="apple-touch-icon" sizes="256x256" href="./design/apple-touch-icon.png">
+	<meta property="og:image" content="/design/desktop.png">
+	<meta property="og:image:width" content="256">
+	<meta property="og:image:height" content="256">
+	<meta property="og:description" content="Next-Gen Isomorphic Application Engine for Embedded, Console, Mobile, Server and Desktop">
 
-    <title>SouthJS</title>
+	<!-- DESIGN -->
+	<link rel="stylesheet" href="/design/index.css">
+	<script src="/design/index.js"></script>
+
+	<!-- CUSTOM -->
+	<link rel="stylesheet" href="/design/highlight.css">
+	<script src="/design/highlight.js"></script>
+
+	<!-- BOOTSTRAP -->
+	<script src="/libraries/lychee/build/html/core.js"></script>
+	<script src="/libraries/lychee/build/html/dist/index.js"></script>
+
+	<style>
+	menu.active {
+		width: 164px;
+	}
+	menu:before {
+		content: 'SouthJS';
+	}
+	menu.active ~ main {
+		left: 176px;
+	}
+	menu > aside {
+		bottom: 56px;
+	}
+	footer {
+		line-height: 20px;
+	}
+	article pre {
+		display: block;
+		margin: 0px;
+	}
+	article code,
+	article code.hljs {
+		display: inline-block;
+		padding: 0.2em 0.4em;
+		color: #ffffff;
+		background: #1f2726;
+		font-family: monaco, Consolas, 'Lucida Console', monospace;
+		font-size: 14px;
+		border-radius: 3px;
+		vertical-align: middle;
+	}
+	
+	</style>
 </head>
 <body>
+<menu class="active">
+	<b><span></span></b>
+	<li class="active" onclick="ui.changeState('welcome')">Welcome</li>
+	<li onclick="ui.changeState('meetups')">Meetups</li>
+	<li onclick="ui.changeState('profiles')">Speaker Profile</li>
+	<li onclick="ui.changeState('exchange')">Exchange</li>
+	<li onclick="ui.changeState('jobs')">Job Board</li>
+	<li onclick="ui.changeState('contact')">Contact</li>
+	<aside>
+		<button class="ico-message" title="Email" onclick="window.open('mailto:kraus.martina.m@googlemail.com', 'emailWindow')"></button>
+		<button class="ico-git" title="Github" onclick="window.location.href='https://github.com/SouthJS'"></button>
+	</aside>
+</menu>
+<header role="banner">
+	<div id="intro-logo">
+		<h1><img alt="southJSlogo" src="/design/compassYELLOW_WHITE.png" width="128" height="128"></h1>
+		<h2>SouthJS</h2>
+	</div>
+	</header>
+<main>
+	<section id="meetups">
+		
+	</section>
+	<section id="profiles">
 
-    <h1>SouthJS is on the way ...</h1>
+	</section>
+	<section id="exchange">
+		
+	</section>
+	<section id="jobs">
+		
+	</section>
+	<section id="contact">
+		
+	</section>
+</main>
+</main>
+<script>
+(function(lychee, global) {
 
+	var environment = new lychee.Environment({
+		id:       'website',
+		debug:    false,
+		sandbox:  false,
+		build:    'app.Main',
+		type:     'source',
+		packages: [
+			new lychee.Package('app', '../lychee.pkg')
+		],
+		tags:     {
+			platform: [ 'html' ]
+		}
+	});
+
+	lychee.setEnvironment(environment);
+	lychee.inject(lychee.ENVIRONMENTS['/libraries/lychee/dist']);
+
+	lychee.init(function(sandbox) {
+
+		var lychee = sandbox.lychee;
+		var app    = sandbox.app;
+
+
+		// This allows using #MAIN in JSON files
+		sandbox.MAIN = new app.Main();
+		sandbox.MAIN.init();
+
+	});
+
+})(lychee, typeof global !== 'undefined' ? global : this);
+</script>
+<script>
+var codes = [].slice.call(document.querySelectorAll('code'));
+if (codes.length > 0) {
+
+	codes.forEach(function(code) {
+		hljs.highlightBlock(code);
+	});
+
+}
+</script>
 </body>
 </html>

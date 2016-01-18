@@ -1,0 +1,365 @@
+<!doctype html>
+<html>
+<head>
+	<title>CodeKittey</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="64x64 32x32 16x16">
+	<link rel="apple-touch-icon" sizes="256x256" href="./design/apple-touch-icon.png">
+	<meta property="og:image" content="/design/desktop.png">
+	<meta property="og:image:width" content="256">
+	<meta property="og:image:height" content="256">
+	<meta property="og:description" content="Next-Gen Isomorphic Application Engine for Embedded, Console, Mobile, Server and Desktop">
+
+	<!-- DESIGN -->
+	<link rel="stylesheet" href="/design/index.css">
+	<script src="/design/index.js"></script>
+
+	<!-- CUSTOM -->
+	<link rel="stylesheet" href="/design/highlight.css">
+	<script src="/design/highlight.js"></script>
+
+	<!-- BOOTSTRAP -->
+	<script src="/libraries/lychee/build/html/core.js"></script>
+	<script src="/libraries/lychee/build/html/dist/index.js"></script>
+
+	<style>
+	menu.active {
+		width: 164px;
+	}
+	menu:before {
+		content: 'CodeKittey';
+	}
+	menu.active ~ main {
+		left: 176px;
+	}
+	menu > aside {
+		bottom: 56px;
+	}
+	footer {
+		line-height: 20px;
+	}
+	article pre {
+		display: block;
+		margin: 0px;
+	}
+	article code,
+	article code.hljs {
+		display: inline-block;
+		padding: 0.2em 0.4em;
+		color: #ffffff;
+		background: #1f2726;
+		font-family: monaco, Consolas, 'Lucida Console', monospace;
+		font-size: 14px;
+		border-radius: 3px;
+		vertical-align: middle;
+	}
+	#welcome,
+	#contact {
+		display: block;
+	}
+	#welcome-logo {
+		display: block;
+		margin: 128px auto;
+		text-align: center;
+	}
+	#welcome-logo h1 {
+		display: inline-block;
+		vertical-align: middle;
+		margin: 0px 16px;
+		line-height: 0px;
+	}
+	#welcome-logo h2 {
+		display: inline-block;
+		height: 128px;
+		vertical-align: middle;
+		margin: 0px 16px;
+		padding: 0px;
+		color: #efefef;
+		font-family: 'museo-sans-300';
+		font-size: 64px;
+		font-weight: normal;
+		line-height: 128px;
+	}
+	#welcome-logo h2 span {
+		color: #d0494b;
+	}
+	#welcome-logo h3 {
+		margin: 0px 16px 0px 16px;
+		padding: 0px;
+		font-family: 'museo-sans-300';
+		font-size: 22px;
+		font-weight: normal;
+	}
+	#welcome article,
+	#contact article {
+		display: block;
+		width: 576px;
+		max-width: none;
+		margin: 128px auto;
+		text-align: left;
+		border: 1px solid transparent;
+	}
+	#welcome article svg,
+	#contact article svg {
+		display: block;
+		width: calc(100% - 64px);
+		margin: 32px;
+	}
+	#welcome article svg text tspan,
+	#contact article svg text tspan {
+		font-family: 'museo-sans-300';
+		font-size: 20px;
+	}
+	#welcome article p,
+	#contact article p {
+		text-align: justify;
+	}
+	#welcome article p.center,
+	#contact article p.center {
+		text-align: center;
+	}
+
+	#contact > div {
+		display: block;
+		width: 576px;
+		margin: 128px auto;
+	}
+	#contact > div h3 {
+		font-family: 'museo-sans-300';
+		font-size: 32px;
+		font-weight: normal;
+		text-align: center;
+	}
+	#contact > div h3.left,
+	#contact > div h3.right {
+		display: inline-block;
+		width: calc(50% - 16px);
+		margin: 1em 0px;
+	}
+	#contact > div article.left,
+	#contact > div article.right {
+		display: inline-block;
+		width: calc(50% - 16px);
+		min-height: 384px;
+		margin: 0px 0px 32px 0px;
+		background: #363f3e;
+	}
+	#contact > div article img {
+		display: block;
+		margin: 32px auto;
+		outline: none;
+		border: 0px none;
+	}
+
+	#contact article.center {
+		display: block;
+		margin: 0px auto;
+	}
+	#contact h3.left,
+	#contact article.left {
+		float: left;
+	}
+	#contact h3.right,
+	#contact article.right {
+		float: right;
+	}
+
+	#contact > div:after,
+	#contact article.clear:after {
+		display: block;
+		content: "";
+		clear: both;
+	}
+
+	#blog {
+		overflow: auto;
+	}
+	#blog article:nth-child(1) {
+		min-width: 384px;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+	#blog article:nth-child(1) ul.select {
+		margin: 0px;
+	}
+	#blog article:nth-child(1) p button {
+		min-width: 144px;
+	}
+	#blog article:nth-child(2) {
+		min-width: 512px;
+		overflow-x: hidden;
+		overflow-y: auto;
+	}
+	#blog article:nth-child(2) h1 { margin: 32px 16px; font-size: 32px; }
+	#blog article:nth-child(2) h2 { margin: 32px 16px; font-size: 32px; }
+	#blog article:nth-child(2) p { margin: 16px; }
+
+	@media (max-width: 660px) {
+		#welcome article,
+		#contact article {
+			width: auto;
+		}
+		#welcome article svg,
+		#contact article svg {
+			width: 100%;
+			margin: 0px;
+		}
+		#welcome article div,
+		#welcome article p,
+		#contact article div,
+		#contact article p {
+			margin-left: 4px;
+			margin-right: 4px;
+		}
+	}
+	@media (max-height: 660px) {
+		menu > aside {
+			bottom: 0px;
+		}
+		main {
+			bottom: 0px;
+		}
+		footer {
+			display: none;
+		}
+	}
+	</style>
+</head>
+<body>
+<menu class="active">
+	<b><span></span></b>
+	<li class="active" onclick="ui.changeState('welcome')">Welcome</li>
+	<li onclick="ui.changeState('blog')">Blog</li>
+	<li onclick="ui.changeState('research')">Research &amp; Development</li>
+	<li onclick="ui.changeState('contact')">Contact</li>
+	<aside>
+		<button class="ico-message" title="Email" onclick="window.open('mailto:kraus.martina.m@googlemail.com', 'emailWindow')"></button>
+		<button class="ico-git" title="Github" onclick="window.location.href='https://github.com/CodeKittey'"></button>
+		<button class="ico-twitter" title="Twitter" onclick="window.location.href='https://twitter.com/wing121'"></button>
+		<button class="ico-google" title="Google+" onclick="window.location.href='https://plus.google.com/u/0/+MartinaKraus'"></button>
+	</aside>
+</menu>
+<main>
+
+	<section id="welcome" class="center active">
+			<article id="contact-details">
+			<h3>Welcome</h3>
+			<p>
+				Hello World
+			</p>
+		</article>
+	</section>
+
+	<section id="blog">
+		<article id="blog-selection">
+			<h3><b>1</b>Select</h3>
+			<form id="blog" enctype="application/json" action="MAIN.state" method="javascript">
+				<table class="vertical">
+					<tr>
+						<th>Article</th>
+						<td>
+							<ul class="select">
+								<li><input name="identifier" type="radio" value="Generic"><span>Initial Release</span></li>
+							</ul>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</article>
+		<article id="blog-details">
+			<h3><b>2</b>Initial Release</h3>
+			<p>
+				An Error occured :(
+			</p>
+			<p>
+				If this message keeps showing up, please install lycheeJS
+				via the installation instructions in the <a href="https://github.com/Artificial-Engineering/lycheeJS">README.md on GitHub</a>.
+			</p>
+		</article>
+	</section>
+	<section id="research">
+
+		<article id="research-selection">
+			<form id="research-selection" enctype="application/json" action="MAIN.state" method="javascript">
+				<table class="vertical">
+					<tr>
+						<td>
+							<ul class="research-select">
+								<li><input name="identifier" type="radio" value="Devvelopment"><span>Development</span></li>
+								<li><input name="identifier" type="radio" value="Paper"><span>Paper</span></li>
+								<li><input name="identifier" type="radio" value="Courses"><span>Courses</span></li>
+							</ul>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</article>
+
+	</section>
+		<section id="contact">
+		<article id="contact-details">
+			<h3>Contact</h3>
+			<form id="contact" enctype="application/json" action="MAIN.state" method="javascript">
+				<ul class="contact-select">
+					<li><span>NAME</span><input name="name" type="text" value="Name"></li>
+					<li><span>E-MAIL</span><input name="name" type="email" value="E-MAIL"></li>
+					<li><span>MESSAGE</span><input name="name" type="textarea" value="MESSAGE"></li>
+				</ul>
+			</form>
+		</article>
+	</section>
+</main>
+</main>
+<footer>
+	Made with <a href="http://lycheejs.org">lycheeJS</a> (c) 2012-2016 - released under MIT license by <a href="http://artificial.engineering">Artificial Engineering</a>.
+</footer>
+<script>
+(function(lychee, global) {
+
+	var environment = new lychee.Environment({
+		id:       'website',
+		debug:    false,
+		sandbox:  false,
+		build:    'app.Main',
+		type:     'source',
+		packages: [
+			new lychee.Package('app', '../lychee.pkg')
+		],
+		tags:     {
+			platform: [ 'html' ]
+		}
+	});
+
+	lychee.setEnvironment(environment);
+	lychee.inject(lychee.ENVIRONMENTS['/libraries/lychee/dist']);
+
+	lychee.init(function(sandbox) {
+
+		var lychee = sandbox.lychee;
+		var app    = sandbox.app;
+
+
+		// This allows using #MAIN in JSON files
+		sandbox.MAIN = new app.Main();
+		sandbox.MAIN.init();
+
+	});
+
+})(lychee, typeof global !== 'undefined' ? global : this);
+</script>
+<script>
+var codes = [].slice.call(document.querySelectorAll('code'));
+if (codes.length > 0) {
+
+	codes.forEach(function(code) {
+		hljs.highlightBlock(code);
+	});
+
+}
+</script>
+</body>
+</html>
